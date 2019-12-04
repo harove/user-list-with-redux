@@ -5,7 +5,7 @@ import { addUserActionCreator } from './store/user.actions';
 
 
 const App = () => {
-    const [name, setName] = useState('hola')
+    const [name, setName] = useState('')
     const store = useSelector(store => store );
     const dispatch = useDispatch();
 
@@ -14,8 +14,9 @@ const App = () => {
             id:null,
             name
         }))
+        setName('');
     }
-    
+
     const handleOnChange = ({target}) => {
         const {value} = target 
         setName(value)
@@ -24,9 +25,24 @@ const App = () => {
     return(
         <div className="app">
             <input type = "text" value = {name} onChange = {handleOnChange}/>
-            <button onClick = {addUser}>
+            <button disabled = {name == ''} onClick = {addUser}>
                 Add user
             </button>
+            <table>
+                <tbody>
+                        {
+                            store.user.list.map(user=>(
+                                <tr key = {user.id}>
+                                    <td>
+                                        {user.name}
+                                    </td>
+                                </tr>
+                                )
+                            )
+                        }
+                </tbody>
+            </table>
+
             <pre>
                 {JSON.stringify(store,undefined,2)}
             </pre>
