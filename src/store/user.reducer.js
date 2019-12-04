@@ -9,6 +9,10 @@ const initialState = ({
     idRemoved: null,
 });
 
+
+
+
+
 export const userReducer = (prevState = initialState, action) => {
     switch (action.type){
         case USER__ADD_USER:

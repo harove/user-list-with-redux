@@ -9,21 +9,13 @@ const App = () => {
     const store = useSelector(store => store );
     const dispatch = useDispatch();
 
-    const addVegeta = () => {
-       dispatch(addUserActionCreator({
-           id:null,
-           name: 'Vegeta',
-       })); 
-    }
-
     const addUser = ()=>{
         dispatch(addUserActionCreator({
             id:null,
             name
         }))
     }
-
-
+    
     const handleOnChange = ({target}) => {
         const {value} = target 
         setName(value)
@@ -33,10 +25,10 @@ const App = () => {
         <div className="app">
             <input type = "text" value = {name} onChange = {handleOnChange}/>
             <button onClick = {addUser}>
-                Add Vegeta
+                Add user
             </button>
             <pre>
-                {JSON.stringify(store)}
+                {JSON.stringify(store,undefined,2)}
             </pre>
         </div>  
     )
