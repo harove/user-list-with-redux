@@ -1,6 +1,13 @@
-.App {
-  text-align: center;
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: black;
+    color: #ccc;
+  }
 }
+
+/* .app {
+  text-align: center;
+} */
 
 .App-logo {
   height: 40vmin;
