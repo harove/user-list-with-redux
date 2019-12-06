@@ -1,11 +1,14 @@
-import { createStore, combineReducers } from 'redux';
-import {userReducer} from './user.reducer';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import userReducer from './modules/user';
+import classRoomReducer from './modules/class-room'
+import {logger} from 'redux-logger'
 
 const rootReducer = combineReducers({
-    user: userReducer,
+    userModule: userReducer,
+    classRoomModule: classRoomReducer,
 });
 
 
 
-export const store = createStore(rootReducer);
+export const store = createStore(rootReducer, applyMiddleware(logger));
 
